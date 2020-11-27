@@ -10,8 +10,7 @@ ws = wb.active
 ws.append(["Question", "Answer", "Solution"])
 
 
-def gameLoop():
-    global score, wb
+def gameLoop(score):
     result = mathQuestion()
     resultArr = [result["question"], result["answer"], result["solution"]]
 
@@ -19,7 +18,7 @@ def gameLoop():
         score += 1
         ws.append(resultArr)
         print(f"{colors.green}Correct{colors.default}, your current score: {colors.yellow+str(score)+colors.default}")
-        gameLoop()
+        gameLoop(score)
     else:
         print(colors.red+"Game Over"+colors.default)
         ws.append(resultArr)
@@ -27,4 +26,4 @@ def gameLoop():
         wb.close()
 
 
-gameLoop()
+gameLoop(score)
