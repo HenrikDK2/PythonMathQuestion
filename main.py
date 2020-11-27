@@ -10,7 +10,7 @@ ws = wb.active
 ws.append(["Question", "Answer", "Solution"])
 
 
-def gameLoop(score):
+while True:
     result = mathQuestion()
     resultArr = [result["question"], result["answer"], result["solution"]]
 
@@ -18,12 +18,9 @@ def gameLoop(score):
         score += 1
         ws.append(resultArr)
         print(f"{colors.green}Correct{colors.default}, your current score: {colors.yellow+str(score)+colors.default}")
-        gameLoop(score)
     else:
         print(colors.red+"Game Over"+colors.default)
         ws.append(resultArr)
         wb.save("data.xlsx")
         wb.close()
-
-
-gameLoop(score)
+        break
